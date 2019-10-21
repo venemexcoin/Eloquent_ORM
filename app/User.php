@@ -2,13 +2,16 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+
+use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable,HasRolesAndPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'level_id','name', 'email', 'password', 'btc', 'eth', 'vmx', 'usd', 'mxn', 'bss', 'avatar'
     ];
 
     /**
@@ -36,6 +39,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
 
     public function profile()
     {
@@ -76,4 +80,5 @@ class User extends Authenticatable
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+
 }

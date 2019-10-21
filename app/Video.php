@@ -16,16 +16,18 @@ class Video extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function comments()
-    {
+    public function comments(){
+
         return $this->morphMany(Comment::class, 'commentable');
     }
-    public function image()
-    {
+
+    public function image(){
+
         return $this->morphOne(Image::class, 'imageable');
     }
-    public function tags()
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
+
+    public function tags(){
+
+        return $this->morphToMary(Tag::class, 'taggable');
     }
 }
