@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable,HasRolesAndPermissions;
+    use Notifiable, HasRolesAndPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'level_id','name', 'email', 'password', 'btc', 'eth', 'vmx', 'usd', 'mxn', 'bss', 'avatar'
+        'level_id', 'name', 'email', 'password', 'btc', 'eth', 'vmx', 'usd', 'mxn', 'bss', 'avatar'
     ];
 
     /**
@@ -39,46 +39,38 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
 
     public function profile()
     {
         return $this->hasOne(Profile::class);
     }
-
     public function level()
     {
         return $this->belongsTo(Level::class);
     }
-
     public function groups()
     {
         return $this->belongsToMany(Group::class)->withTimestamps();
     }
-
     public function location()
     {
         return $this->hasOneThrough(Location::class, Profile::class);
     }
-
     public function posts()
     {
         return $this->hasMany(Post::class);
     }
-
     public function videos()
     {
         return $this->hasMany(Video::class);
     }
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
-
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
     }
-
 }

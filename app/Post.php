@@ -10,7 +10,7 @@ use App\Tad;
 class Post extends Model
 {
     protected $fillable = [
-        'user_id', 'category_id', 'name', 'slug','excerpt', 'body', 'status', 'file', 'zip', 'price', 'cripto'
+        'user_id', 'category_id', 'name', 'slug', 'excerpt', 'body', 'status', 'file', 'zip', 'price', 'cripto'
     ];
 
     public function user()
@@ -23,14 +23,14 @@ class Post extends Model
     }
     public function comments()
     {
-    	return $this->morphMany(Comment::class, 'commentable');
+        return $this->morphMany(Comment::class, 'commentable');
     }
     public function image()
     {
-    	return $this->morphOne(Image::class, 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
     public function tags()
     {
-    	return $this->morphToMany(Tag::class, 'taggable');
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 }

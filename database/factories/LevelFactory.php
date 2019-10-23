@@ -5,8 +5,6 @@
 use App\Level;
 use Faker\Generator as Faker;
 
-$factory->define(Level::class, function (Faker $faker) {
-    return [
-        
-    ];
+$factory->define(App\Level::class, function (Faker $faker) {
+    return [];
 });

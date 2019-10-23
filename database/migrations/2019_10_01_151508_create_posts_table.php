@@ -16,8 +16,8 @@ class CreatePostsTable extends Migration
 
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();      
             $table->string('name', 128);
             $table->string('slug', 128)->unique();
             $table->mediumText('excerpt')->nullable();
@@ -25,18 +25,9 @@ class CreatePostsTable extends Migration
             $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->string('file')->nullable();
             $table->string('zip')->nullable();
-            $table->float('price')->default(0,0);
-            $table->double('cripto', 100,8)->default(0.00000000);
+            $table->float('price')->default(0, 0);
+            $table->double('cripto', 100, 8)->default(0.00000000);
             $table->timestamps();
-
-            $table->foreign('category_id')->references('id')->on('categories')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-        $table->foreign('user_id')->references('id')->on('users')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-
-
         });
     }
 
@@ -50,4 +41,3 @@ class CreatePostsTable extends Migration
         Schema::dropIfExists('posts');
     }
 }
-

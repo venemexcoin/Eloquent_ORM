@@ -17,13 +17,13 @@ class CreateTaggablesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('tag_id')->unsigned();
 
-            $table->morphs('taggables');
-            
-        
+            $table->morphs('taggable');
+
+
 
             $table->foreign('tag_id')->references('id')->on('tags')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

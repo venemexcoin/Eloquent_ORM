@@ -5,7 +5,7 @@
 use App\Group;
 use Faker\Generator as Faker;
 
-$factory->define(Group::class, function (Faker $faker) {
+$factory->define(App\Group::class, function (Faker $faker) {
     return [
         'name' => $faker->word
     ];

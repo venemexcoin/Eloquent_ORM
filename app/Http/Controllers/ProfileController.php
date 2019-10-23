@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use App\User;
 use Illuminate\Http\Request;
+
 
 class ProfileController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::get();
+        //dd($users);
+        return view('Profile.index', compact('users'));
     }
 
     /**

@@ -17,8 +17,8 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('description');
-            $table->float('price')->default(0,0);
-            $table->double('cripto', 100,8)->default(0.00000000);
+            $table->float('price')->default(0, 0);
+            $table->double('cripto', 100, 8)->default(0.00000000);
             $table->timestamps();
         });
     }

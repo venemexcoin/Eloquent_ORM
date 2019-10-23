@@ -17,13 +17,13 @@
            <!--imagen del avatar---->
 
      @if(Auth::user()->avatar == '')
-     <a href="#"><img src="{{ asset('fron/img/avatar/IDM.jpg')}}" class="img-circle elevation-2" alt="User Image"></a>
+        <a href="3"><img src="{{ asset('fron/img/avatar/IDM.jpg')}}" class="img-circle elevation-2" alt="User Image"></a>
      @else
       <img src="{{Auth::user()->avatar }}" class="img-circle elevation-2">
      @endif
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="{{route("profile.index")}}" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">

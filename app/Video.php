@@ -6,28 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
+    protected $fillable = [
+        'category_id', 'user_id', 'name'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-
-    public function comments(){
-
+    public function comments()
+    {
         return $this->morphMany(Comment::class, 'commentable');
     }
-
-    public function image(){
-
+    public function image()
+    {
         return $this->morphOne(Image::class, 'imageable');
     }
-
-    public function tags(){
-
-        return $this->morphToMary(Tag::class, 'taggable');
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 }
