@@ -1,7 +1,7 @@
 @extends("theme1.$theme5.layouts")
 
 @section("titles")
-Blog
+Blog Perfil Usuario
 @endsection
 @section("homeD")
 {{ route('home')}}
@@ -19,11 +19,8 @@ Blog
 @section("styles")
 
 @endsection
-
 @section('content')
-
- <!-- Main content -->
-            <section class="content ">
+<section class="content ">
 
                 <div class="row">
                   <div class="col-md-8 offset-md-2">
@@ -49,7 +46,7 @@ Blog
                     <!--/.card body -->
                     <!-- /.card-body -->
                       <div class="card-footer">
-                            <p>Posted {{ $post->created_at->diffForHumans()}} by  <a href="#"><b>{{$post->user->name }}</b></a></p>
+                            <p>Posted {{ $post->created_at->diffForHumans()}} by <b>{{$post->user->name }}</b></p>
                       </div><hr/>
                       <!-- /.card-footer-->
                       @endforeach
@@ -61,12 +58,10 @@ Blog
 
             </section>
 
-
 @endsection
 
-@section('scripts')
-<script>
 
-</script>
+@section('scripts')
+
 
 @endsection

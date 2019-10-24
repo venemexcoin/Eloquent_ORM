@@ -26,8 +26,13 @@ Blog
     <div class="card card-widget">
       <div class="card-header">
         <div class="user-block">
-          <img class="img-circle" src="{{auth::user()->avatar}}" alt="User Image">
-        <span class="username"><a href="#">{{$post->user_id }}</a></span>
+            @if($post->user->avatar == '')
+                <a href="3"><img src="{{ asset('fron/img/avatar/IDM.jpg')}}" class="img-circle elevation-2" alt="User Image"></a>
+            @else
+          <img class="img-circle" src="{{$post->user->avatar}}" alt="User Image">
+            @endif
+
+        <span class="username"><p><a href="#"><b>{{$post->user->name }}</b></a></p>
           <span class="description">{{$post->name}}</span>
           <hr>
            <span class="blog-header">Categorías</span>
@@ -40,8 +45,7 @@ Blog
             <i class="far fa-circle"></i></button>
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
           </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-          </button>
+
 
         </div>
         <!-- /.card-tools -->
@@ -52,6 +56,7 @@ Blog
           @if($post->file)
         <img class="img-fluid pad" src="{{asset("$post->file")}}" alt="Photo)}}">
           @endif
+          
         <p>{!!$post->body !!}</p>
         <hr>
          <span>Etiquetas</span>
@@ -122,3 +127,8 @@ Blog
 </script>
 
 @endsection
+
+
+
+
+

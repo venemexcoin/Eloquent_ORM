@@ -41,6 +41,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
+
+
     //Roles
     Route::post('roles/store', 'RoleController@store')->name('roles.store')
         ->middleware('permission:roles.create');
@@ -140,4 +142,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('downloads',      'Admin\DownloadController');
 
     Route::resource('profile',       'ProfileController');
+
+    Route::resource('blogprofile',       'BlogprofileController');
 });

@@ -30,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-       //
+        //
     }
 
     /**
@@ -44,14 +44,14 @@ class UserController extends Controller
         $user = User::create($request->all());
 
         // Imagen
-        if($request->file('avatar')){
+        if ($request->file('avatar')) {
             $path = Storage::disk('public')->put('avatar', $request->file('avatar'));
             $user->fill(['avatar' => asset($path)])->save();
         }
         $user->users()->attach($request->get('users'));
 
         return redirect()->route('users.edit', $user->id)
-         ->with('info', 'Entrada creada con exito');
+            ->with('info', 'Entrada creada con exito');
     }
 
     /**
@@ -62,6 +62,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        dd($user);
         return view('users.show', compact('user'));
     }
 
@@ -74,7 +75,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::get();
-        return view('users.edit', compact('user','roles'));
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -90,8 +91,8 @@ class UserController extends Controller
         //Actualiza el usuario
         $user->update($request->all());
 
-         // Imagen
-         if($request->file('avatar')){
+        // Imagen
+        if ($request->file('avatar')) {
             $path = Storage::disk('public')->put('avatar', $request->file('avatar'));
             $user->fill(['avatar' => asset($path)])->save();
         }
@@ -100,7 +101,7 @@ class UserController extends Controller
         $user->roles()->sync($request->get('roles'));
 
         return redirect()->route('users.edit', $user->id)
-        ->with('info', 'Usero actualizado con éxito');
+            ->with('info', 'Usero actualizado con éxito');
     }
 
     /**
@@ -111,8 +112,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-      $user->delete();
+        $user->delete();
 
-      return back()->with('info', 'Eliminado correctamente');
+        return back()->with('info', 'Eliminado correctamente');
     }
 }
