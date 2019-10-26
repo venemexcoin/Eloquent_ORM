@@ -9,6 +9,15 @@ Blog
 @section("layoutR")
 {{ route('blog')}}
 @endsection
+@section("otros")  {{--} ruta--}}
+
+@endsection
+@section("otros1") {{-- Nompre de la ruta--}}
+
+@endsection
+@section("otros2") {{--class par poner--}}
+
+@endsection
 @section("homeT")
 Home
 @endsection
@@ -27,12 +36,12 @@ Blog
       <div class="card-header">
         <div class="user-block">
             @if($post->user->avatar == '')
-                <a href="3"><img src="{{ asset('fron/img/avatar/IDM.jpg')}}" class="img-circle elevation-2" alt="User Image"></a>
+                <img src="{{ asset('fron/img/avatar/IDM.jpg')}}" class="img-circle elevation-2" alt="User Image">
             @else
           <img class="img-circle" src="{{$post->user->avatar}}" alt="User Image">
             @endif
 
-        <span class="username"><p><a href="#"><b>{{$post->user->name }}</b></a></p>
+        <span class="username"><p><a href="{{ route('profil',  [$post->user->id])}}"><b>{{$post->user->name }}</b></a></p>
           <span class="description">{{$post->name}}</span>
           <hr>
            <span class="blog-header">Categorías</span>
@@ -56,7 +65,7 @@ Blog
           @if($post->file)
         <img class="img-fluid pad" src="{{asset("$post->file")}}" alt="Photo)}}">
           @endif
-          
+
         <p>{!!$post->body !!}</p>
         <hr>
          <span>Etiquetas</span>

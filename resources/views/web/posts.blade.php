@@ -15,6 +15,15 @@ Home
 @section("layout")
 Blog
 @endsection
+@section("otros")  {{--} ruta--}}
+
+@endsection
+@section("otros1") {{-- Nompre de la ruta--}}
+
+@endsection
+@section("otros2") {{--class par poner--}}
+
+@endsection
 
 @section("styles")
 
@@ -49,7 +58,7 @@ Blog
                     <!--/.card body -->
                     <!-- /.card-body -->
                       <div class="card-footer">
-                            <p>Posted {{ $post->created_at->diffForHumans()}} by  <a href="#"><b>{{$post->user->name }}</b></a></p>
+
                       </div><hr/>
                       <!-- /.card-footer-->
                       @endforeach

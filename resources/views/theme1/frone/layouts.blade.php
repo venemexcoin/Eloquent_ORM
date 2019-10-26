@@ -64,7 +64,7 @@
                     <ol class="breadcrumb float-sm-right">
                       <li class="breadcrumb-item"><a href="@yield("homeD")">@yield("homeT")</a></li>
                       <li class="breadcrumb-item"><a href="@yield("layoutR")">@yield("layout")</a></li>
-                      <li class="breadcrumb-item active">Collapsed Sidebar</li>
+                      <li class="@yield("otros2")"><a href="@yield("otros")">@yield("otros1")</a></li>
                     </ol>
                   </div>
                 </div>

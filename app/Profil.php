@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Blogprefile extends Model
+class Peofil extends Model
 {
     //
 }

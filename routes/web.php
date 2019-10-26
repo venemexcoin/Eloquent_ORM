@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('categoria/{slug}', 'Web\PageController@category')->name('category');
     Route::get('etiqueta/{slug}',  'Web\PageController@tag')->name('tag');
 
-
+    Route::get('profil/{id}', 'Web\ProfilController@profil')->name('profil');
 
 
 
