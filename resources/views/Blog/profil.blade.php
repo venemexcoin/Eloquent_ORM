@@ -42,8 +42,7 @@ Blog
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fas fa-minus"></i></button>
-              <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                <i class="fas fa-times"></i></button>
+
             </div>
           </div>
           <div class="card-body">
@@ -54,7 +53,7 @@ Blog
                     <div class="info-box bg-light">
                       <div class="info-box-content">
                         <span class="info-box-text text-center text-muted">Numero de Post</span>
-                        <span class="info-box-number text-center text-muted mb-0">2300</span>
+                        <span class="info-box-number text-center text-muted mb-0">20</span>
                       </div>
                     </div>
                   </div>
@@ -69,8 +68,15 @@ Blog
                   <div class="col-12 col-sm-4">
                     <div class="info-box bg-light">
                       <div class="info-box-content">
-                        <span class="info-box-text text-center text-muted">Usuario</span>
-                        <span class="info-box-number text-center text-muted mb-0">oro <span>
+                        <span class="info-box-text text-center text-muted">Nivel</span>
+                      <span class="info-box-number text-center text-muted mb-0">
+                        @if($user->level)
+                      <a href="{{route('level', $user->level->id)}}">
+                        {{$user->level->name}}
+                      </a> <span>
+                        @else
+                        ----
+                        @endif
                       </div>
                     </div>
                   </div>
@@ -78,12 +84,12 @@ Blog
                 <div class="row">
                   <div class="col-12">
                     <h4>Recent Activity</h4>
-                      <div class="post">
+                      <div class="video">
                         <div class="user-block">
-                                @if($user->avatar == '')
-                                <img src="{{ asset('fron/img/avatar/IDM.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                            @if($user->avatar)
+                            <img class="img-circle" src="{{$user->avatar}}" alt="User Image">
                             @else
-                          <img class="img-circle" src="{{$user->avatar}}" alt="User Image">
+                            <img src="{{ asset('fron/img/avatar/IDM.jpg')}}" class="img-circle elevation-2" alt="User Image">
                             @endif
                           <span class="username">
                             <a href="#">{{$user->name}}</a>
@@ -94,12 +100,14 @@ Blog
                         <br>
                         <br>
                         <br>
-                        <p>
-                          Lorem ipsum represents a long-held tradition for designers,
-                          typographers and the like. Some people hate it and argue for
-                          its demise, but others ignore.
-                        </p>
+                        <p><strong>Grupos a los que pertenece:</strong></p>
 
+                            @forelse ($user->groups as $group)
+                                <span class="badge badge-primary">{{ $group->name }}</span>
+                            @empty
+
+                          <span class="badge badge-primary"><b>NO pertenese a ningun grupo</b></span>
+                            @endforelse
                         <p>
                           <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
                         </p>
@@ -116,31 +124,59 @@ Blog
                 <p class="text-muted">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
                 <br>
                 <div class="text-muted">
-                  <p class="text-sm">Client Company
-                    <b class="d-block">Deveint Inc</b>
-                  </p>
-                  <p class="text-sm">Project Leader
-                    <b class="d-block">Tony Chicken</b>
+                  <p class="text-sm">Imagen Cliente</p>
+                   @if($user->image)
+                   <img src="{{$user->image->url}}"class="d-block float-center rounded-circle mr-3">
+                    @else
+                  <img src="{{ asset('fron/img/bg/unlock.jpg')}}" class="img-circle elevation-2"width="30%" alt="User Image">
+                    @endif
+                    <br/>
+                  <p class="text-sm">Pais
+                   @if( $user->location)
+                   <b class="d-block">{{ $user->location->country }}</b>
+                   @else
+                  <b class="d-block">País Desconocido</b>
+                  @endif
                   </p>
                 </div>
 
                 <h5 class="mt-5 text-muted">Project files</h5>
                 <ul class="list-unstyled">
                   <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>{{ $user->profile->instagram }}</a>
+                  @if($user->profile->facebook )
+                  <a href="{{url($user->profile->facebook)}}" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>Facebook</a>
+                  @else
+                  <i class="far fa-fw fa-file-word"></i><b>No tiene Facebook</b>
+                  @endif
+                 </li>
+                  <li>
+                    @if($user->profile->instagram)
+                    <a href="{{url($user->profile->instagram)}}" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i>Instagram</a>
+                    @else
+                    <i class="far fa-fw fa-facebook"></i><b>No tiene instagram</b>
+                    @endif
+                </li>
+                  <li>
+                    @if($user->email)
+                    <i class="far fa-fw fa-envelope"></i>{{$user->email}}</a>
+                    @else
+                    <i class="far fa-fw fa-image"></i><b>No tiene correo</b>
+                    @endif
                   </li>
                   <li>
-                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
-                  </li>
+                    @if($user->profile->telefon)
+                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i>{{$user->profile->telefon}}</a>
+                    @else
+                     <i class="far fa-fw fa-image"></i><b>No tiene Teléfono</b>
+                    @endif
+                </li>
                   <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i>{{$user->email}}</a>
-                  </li>
-                  <li>
-                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
-                  </li>
-                  <li>
-                    <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
-                  </li>
+                    @if($user->profile->web)
+                        <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>{{$user->profile->web}}</a>
+                    @else
+                    <i class="far fa-fw fa-image"></i><b>No tiene Pagina Web</b>
+                    @endif
+                </li>
                 </ul>
                 <div class="text-center mt-5 mb-3">
                   <a href="#" class="btn btn-sm btn-primary">Add files</a>
@@ -155,14 +191,95 @@ Blog
 
       </section>
       <!-- /.content -->
+      <div class="container">
+            <div class="row">
+                <div class="col-12 my-3 pt-3 shadow">
+                <h3>Posts publicados por: {{$user->name}}</h3>
+                    <div class="row">
+                    @foreach ($posts as $video)
+                        <div class="col-6">
+                            <div class="card md-3">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                      @if($video->image)
+                                    <img src="{{ $video->image->url }}" class="card-img">
+                                      @else
+                                      <img src="{{ asset('fron/img/bg/unlock.jpg')}}" class="elevation-2"width="100%" alt="User Image">
+                                      @endif
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                    <h5 class="card-title">{{$video->name }}</h5>
+                                    <h6 class="cord-subtitle text-muted">
+                                        {{$video->category->name}} |
+                                        {{$video->comments_count}}
+                                        {{ Str::plural('comentario', $video->comments_count )}}
+                                    </h6>
+                                    @if($video->tags)
+                                    @foreach ($video->tags as $tag)
+                                    <span class="badge badge-light">
+                                        #{{ $tag->name}}
+                                    </span>
+                                    @endforeach
+                                    @endif
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+              </div>
+            </div>
+      </div>
+      <!-- /poost -->
+      <!-- videos -->
 
+      <div class="container">
+            <div class="row">
+                <div class="col-12 my-3 pt-3 shadow">
+                    <h3>Videos publicados por: {{$user->name}}</h3>
+                    <div class="row">
+                    @foreach ($videos as $video)
+                        <div class="col-6">
+                            <div class="card md-3">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                      @if($video->image)
+                                    <img src="{{ $video->image->url }}" class="card-img">
+                                      @else
+                                      <img src="{{ asset('fron/img/bg/unlock.jpg')}}" class="elevation-2"width="100%" alt="User Image">
+                                      @endif
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                    <h5 class="card-title">{{$video->name }}</h5>
+                                    <h6 class="cord-subtitle text-muted">
+                                        {{$video->category->name}} |
+                                        {{$video->comments_count}}
+                                        {{ Str::plural('comentario', $video->comments_count )}}
+                                    </h6>
+                                    @if($video->tags)
+                                    @foreach ($video->tags as $tag)
+                                    <span class="badge badge-light">
+                                        #{{ $tag->name}}
+                                    </span>
+                                    @endforeach
+                                    @endif
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+              </div>
+            </div>
+      </div>
+       <!-- /videos -->
 @endsection
 
 @section('scripts')
 
 @endsection
-
-
-
-
 

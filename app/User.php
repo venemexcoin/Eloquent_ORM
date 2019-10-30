@@ -7,6 +7,8 @@ use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Profile;
+use App\Profil;
 
 
 class User extends Authenticatable
@@ -45,6 +47,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+
+
     public function level()
     {
         return $this->belongsTo(Level::class);

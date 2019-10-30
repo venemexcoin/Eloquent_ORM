@@ -80,7 +80,7 @@ Blog
         <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
         <span class="float-right text-muted">127 likes - 3 comments</span>
       </div>
-      <!-- /.card-body -->
+      {{-- <!-- /.card-body -->
       <div class="card-footer card-comments">
         <div class="card-comment">
           <!-- User image -->
@@ -113,8 +113,8 @@ Blog
         </div>
         <!-- /.card-comment -->
       </div>
-      <!-- /.card-footer -->
-      <div class="card-footer">
+      <!-- /.card-footer --> --}}
+      {{-- <div class="card-footer">
         <form action="#" method="post">
           <img class="img-fluid img-circle img-sm" src="{{asset("fron/$theme/dist/img/user4-128x128.jpg")}}" alt="Alt Text">
           <!-- .img-push is used to add margin to elements next to floating images -->
@@ -123,8 +123,9 @@ Blog
           </div>
         </form>
       </div>
-      <!-- /.card-footer -->
-    </div>
+      <!-- /.card-footer --> --}}
+
+        </div>
     <!-- /.card -->
   </div>
 </div>

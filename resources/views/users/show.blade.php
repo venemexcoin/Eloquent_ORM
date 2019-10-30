@@ -73,14 +73,19 @@ User
             </div>
             <div class="callout callout-warning">
                 <h5>Avatar</h5>
-
-                <p>{{$user->avatar}}</p>
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                      <img src="{{asset("fron/$theme/dist/img/user2-160x160.jpg")}}" class="img-circle elevation-2" alt="User Image">
-                    </div>
+                <div class="image">
+                    <!--imagen del avatar---->
+
+              @if($user->avatar == '')
+                 <img src="{{ asset('fron/img/avatar/IDM.jpg')}}" class="img-circle elevation-2" alt="User Image">
+              @else
+               <img src="{{$user->avatar }}" class="img-circle elevation-3">
+              @endif
+                 </div>
+                </div>
                     <div class="info">
-                    <a href="#" class="d-block">{{$user->name}}</a>
+                    <a href="#" class="d-block">{{$user->profile->facebook }}</a>
                     </div>
                   </div>
             </div>

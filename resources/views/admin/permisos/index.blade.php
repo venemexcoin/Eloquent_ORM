@@ -27,7 +27,7 @@ blog
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Lista de Categorías</h3>
-          @can('categories.create')
+          @can('inicio.create')
         <a href="{{route("admin.create")}}" class="btn btn-sm btn-primary float-right">Crear</a>
           @endcan
         </div>
@@ -46,21 +46,21 @@ blog
                 <tr>
                 <td>{{ $permiso->id }}</td>
                 <td>{{ $permiso->name }}</td>
-                @can("categories.show")
+                @can("inicio.show")
                     <td width="10px">
                     <a href="{{ route("admin.show", $permiso->id)}}" class="btn btn-sm btn-defaul">
                         <span class="botonV">Ver</span>
                     </a>
                     </td>
                 @endcan
-                @can("categories.edit")
+                @can("inicio.edit")
                 <td width="10px">
                 <a href="{{ route("admin.edit", $permiso->id)}}" class="btn btn-sm btn-defaul">
                     <span class="botonE">Edit</span>
                 </a>
                 </td>
                 @endcan
-                @can("categories.")
+                @can("inicio.destroy")
                 <td width="10px">
                     {!! Form::open(['route' => ['admin.destroy', $permiso->id],
                     'method' => 'DELETE'])!!}

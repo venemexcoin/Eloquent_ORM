@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('etiqueta/{slug}',  'Web\PageController@tag')->name('tag');
 
     Route::get('profil/{id}', 'Web\ProfilController@profil')->name('profil');
-
+    Route::get('level/{id}', 'Web\ProfilController@level')->name('level');
 
 
 

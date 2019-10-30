@@ -217,6 +217,14 @@
                 </a>
               </li>
               @endcan
+              @can('admin.index')
+              <li class="nav-item">
+                <a href="{{ route('admin.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Permission</p>
+                </a>
+              </li>
+              @endcan
             </ul>
           </li>
           <!--Admin Blog -->
@@ -257,6 +265,7 @@
                   </a>
                 </li>
                 @endcan
+
               </ul>
             </li>
             <!--/.Admin Blog -->

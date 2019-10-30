@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Category;
 use App\User;
+use App\Comment;
 
 class PageController extends Controller
 {
     public function blog()
     {
 
-        $posts = Post::orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(3);
+        $posts = Post::orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(5);
 
         return view('web.posts', compact('posts'));
     }

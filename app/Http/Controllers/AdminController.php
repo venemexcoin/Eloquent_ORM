@@ -22,8 +22,6 @@ class AdminController extends Controller
         $this->middleware('permission:admin.show')->only('show');
 
         $this->middleware('permission:admin.destroy')->only('destroy');
-
-
     }
     /**
      * Display a listing of the resource.
@@ -59,7 +57,7 @@ class AdminController extends Controller
         $permiso = Permission::create($request->all());
 
         return redirect()->route('permisos.edit', compact('permiso'))
-        ->with('info', 'categorías creada con éxito');
+            ->with('info', 'categorías creada con éxito');
     }
 
     /**
@@ -94,7 +92,7 @@ class AdminController extends Controller
      * @param  \App\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-     public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $permiso = Permission::find($id);
 
